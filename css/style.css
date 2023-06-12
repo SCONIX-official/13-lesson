@@ -1,0 +1,582 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+aside, nav, footer, header, section {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  min-width: 320px;
+}
+
+body {
+  line-height: 1;
+  font-size: 14px;
+  font-family: "Roboto";
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: "Roboto";
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/*------------------------------------------------------*/
+body {
+  background: url("../img/bg/forest-surface.png") 0% 80%/512px 40px repeat-x, url("../img/tree/tree-top.png") 15px 50%/105px 82px no-repeat, url("../img/tree/tree-top.png") 0px 59%/135px 112px no-repeat, url("../img/tree/tree-top.png") -10px 69%/154px 102px no-repeat, url("../img/tree/tree-bot.png") -10px 76.5%/154px 52px no-repeat, url("../img/tree/tree-top.png") 375px 51%/105px 82px no-repeat, url("../img/tree/tree-top.png") 360px 59%/135px 112px no-repeat, url("../img/tree/tree-top.png") 350px 68%/154px 102px no-repeat, url("../img/tree/tree-bot.png") 353px 76.5%/154px 52px no-repeat, url("../img/tree/tree-top.png") 475px 49%/105px 82px no-repeat, url("../img/tree/tree-top.png") 460px 60%/135px 112px no-repeat, url("../img/tree/tree-top.png") 450px 70%/154px 102px no-repeat, url("../img/tree/tree-bot.png") 453px 76.5%/154px 52px no-repeat, url("../img/tree/tree-top.png") 865px 50%/105px 82px no-repeat, url("../img/tree/tree-top.png") 850px 59%/135px 112px no-repeat, url("../img/tree/tree-top.png") 840px 69%/154px 102px no-repeat, url("../img/tree/tree-bot.png") 843px 76.5%/154px 52px no-repeat, url("../img/tree/tree-top.png") 1065px 51%/105px 82px no-repeat, url("../img/tree/tree-top.png") 1050px 60%/135px 112px no-repeat, url("../img/tree/tree-top.png") 1040px 70%/154px 102px no-repeat, url("../img/tree/tree-bot.png") 1043px 76.5%/154px 52px no-repeat, url("../img/tree/tree-top.png") 1365px 47%/105px 82px no-repeat, url("../img/tree/tree-top.png") 1350px 57%/135px 112px no-repeat, url("../img/tree/tree-top.png") 1340px 69%/154px 102px no-repeat, url("../img/tree/tree-bot.png") 1343px 76.5%/154px 52px no-repeat, url("../img/bg/ground2.png") 0 130%/300px repeat-x, url("../img/bg/sky-bgst.png") 250px 0/50px 100% repeat;
+}
+
+.wrapper {
+  overflow: hidden;
+  min-height: 100%;
+  position: relative;
+  -webkit-perspective: 400px;
+          perspective: 400px;
+  -webkit-perspective-origin: center 500px;
+          perspective-origin: center 500px;
+}
+
+.pedal-left {
+  position: absolute;
+  bottom: 0%;
+  left: 10%;
+  width: 200px;
+  height: 200px;
+  background: url("../img/decor/pedal-brake-normal.png") 50%/cover no-repeat;
+  z-index: 5;
+}
+
+.pedal-right {
+  position: absolute;
+  bottom: 0%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  background: url("../img/decor/pedal-gas-normal.png") 50%/cover no-repeat;
+  z-index: 5;
+  -webkit-animation: press 0s ease 0.5s 1 alternate forwards;
+          animation: press 0s ease 0.5s 1 alternate forwards;
+}
+@-webkit-keyframes press {
+  0% {
+    background: url("../img/decor/pedal-gas-normal.png") 50%/cover no-repeat;
+  }
+  100% {
+    background: url("../img/decor/pedal-gas-pressed.png") 50%/cover no-repeat;
+  }
+}
+@keyframes press {
+  0% {
+    background: url("../img/decor/pedal-gas-normal.png") 50%/cover no-repeat;
+  }
+  100% {
+    background: url("../img/decor/pedal-gas-pressed.png") 50%/cover no-repeat;
+  }
+}
+
+.meter-left {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background: url("../img/decor/meter-boost.png") 50%/cover no-repeat;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+}
+.meter-left::after {
+  content: "";
+  background: url("../img/decor/meter-needle.png") 50%/cover no-repeat;
+  width: 5px;
+  height: 80px;
+  display: inline-block;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform-origin: 100% 80%;
+          transform-origin: 100% 80%;
+  -webkit-animation: meter-1 2.5s ease 0.6s 1 alternate forwards;
+          animation: meter-1 2.5s ease 0.6s 1 alternate forwards;
+}
+@-webkit-keyframes meter-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(160deg);
+            transform: rotate(160deg);
+  }
+  60% {
+    -webkit-transform: rotate(100deg);
+            transform: rotate(100deg);
+  }
+  90% {
+    -webkit-transform: rotate(80deg);
+            transform: rotate(80deg);
+  }
+  100% {
+    -webkit-transform: rotate(160deg);
+            transform: rotate(160deg);
+  }
+}
+@keyframes meter-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(160deg);
+            transform: rotate(160deg);
+  }
+  60% {
+    -webkit-transform: rotate(100deg);
+            transform: rotate(100deg);
+  }
+  90% {
+    -webkit-transform: rotate(80deg);
+            transform: rotate(80deg);
+  }
+  100% {
+    -webkit-transform: rotate(160deg);
+            transform: rotate(160deg);
+  }
+}
+
+.meter-right {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background: url("../img/decor/meter-rpm.png") 50%/cover no-repeat;
+}
+.meter-right::after {
+  content: "";
+  background: url("../img/decor/meter-needle.png") 50%/cover no-repeat;
+  width: 5px;
+  height: 80px;
+  display: inline-block;
+  position: absolute;
+  top: 10%;
+  left: 48%;
+  -webkit-transform-origin: 100% 80%;
+          transform-origin: 100% 80%;
+  -webkit-animation: meter 2.5s ease 0.6s infinite alternate;
+          animation: meter 2.5s ease 0.6s infinite alternate;
+}
+@-webkit-keyframes meter {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(140deg);
+            transform: rotate(140deg);
+  }
+}
+@keyframes meter {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(140deg);
+            transform: rotate(140deg);
+  }
+}
+
+.benzin {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 60px;
+  height: 60px;
+  background: url("../img/decor/fuel-icon.png") 50%/cover no-repeat;
+}
+.benzin::after {
+  content: "";
+  height: 30px;
+  border: 1px solid #000;
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  left: 60px;
+  top: 15px;
+  -webkit-animation: benzine 26s linear infinite 0s alternate forwards;
+          animation: benzine 26s linear infinite 0s alternate forwards;
+}
+@-webkit-keyframes benzine {
+  0% {
+    background: url("../img/bg/moon-bg.png") 0px 0/100% no-repeat;
+  }
+  100% {
+    background: url("../img/bg/moon-bg.png") -200px 0/100% no-repeat;
+  }
+}
+@keyframes benzine {
+  0% {
+    background: url("../img/bg/moon-bg.png") 0px 0/100% no-repeat;
+  }
+  100% {
+    background: url("../img/bg/moon-bg.png") -200px 0/100% no-repeat;
+  }
+}
+
+._container {
+  max-width: 1330px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.main {
+  font-size: 0;
+}
+.main__container {
+  padding: 399px 0px 0px 0px;
+}
+
+.car__body {
+  width: 330px;
+  height: 200px;
+  padding: 94px 0px 0px 15px;
+  position: relative;
+  -webkit-animation: red-car 25.5s ease infinite 0s forwards;
+          animation: red-car 25.5s ease infinite 0s forwards;
+}
+.car__body:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+@-webkit-keyframes red-car {
+  0% {
+    -webkit-transform: translate(-700px, 0);
+            transform: translate(-700px, 0);
+  }
+  100% {
+    -webkit-transform: translate(1450px, 0);
+            transform: translate(1450px, 0);
+  }
+}
+@keyframes red-car {
+  0% {
+    -webkit-transform: translate(-700px, 0);
+            transform: translate(-700px, 0);
+  }
+  100% {
+    -webkit-transform: translate(1450px, 0);
+            transform: translate(1450px, 0);
+  }
+}
+.car__item {
+  display: inline-block;
+}
+.trunk-car {
+  width: 99px;
+  height: 80px;
+  background-color: rgb(165, 13, 13);
+  border-radius: 20px 0 0 10%;
+  position: relative;
+  border-right: 2px solid #000;
+}
+.trunk-car::before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  top: -6px;
+  left: 68px;
+  width: 3px;
+  height: 6px;
+}
+.trunk-car::after {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  top: -6px;
+  left: 23px;
+  width: 3px;
+  height: 6px;
+}
+.trunk-car__circle {
+  background-color: rgba(14, 7, 7, 0.664);
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  top: 30px;
+  left: 4px;
+  border-top-left-radius: 110px;
+  border-top-right-radius: 110px;
+  border: 5px solid #040202;
+  border-bottom: 0;
+}
+.trunk-car__circle::after {
+  content: "";
+  position: absolute;
+  background: url("../img/tire.png") 0 0 no-repeat;
+  top: 10px;
+  left: 3px;
+  width: 63px;
+  height: 63px;
+  z-index: 2;
+  -webkit-animation: ballon 0.2s linear 0s infinite;
+          animation: ballon 0.2s linear 0s infinite;
+}
+@-webkit-keyframes ballon {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes ballon {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.trunk-car__circle::before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  top: 21px;
+  left: -20px;
+  width: 20px;
+  height: 15px;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.center-car {
+  width: 99px;
+  height: 80px;
+  background-color: rgb(165, 13, 13);
+  position: relative;
+  border-right: 2px solid #000;
+  border-top: 1px solid #000;
+  z-index: auto;
+}
+.center-car::after {
+  content: "";
+  position: absolute;
+  background: #000;
+  top: 75px;
+  left: -20px;
+  width: 130px;
+  height: 5px;
+}
+.center-car::before {
+  content: "";
+  position: absolute;
+  background: rgb(165, 13, 13);
+  top: -40px;
+  left: 91px;
+  width: 14px;
+  height: 60px;
+  border-radius: 10px;
+  -webkit-transform: rotate(-35deg);
+          transform: rotate(-35deg);
+  border: 2px solid #000;
+}
+.center-car__salon {
+  z-index: -5;
+}
+.center-car__salon::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: rgb(51, 23, 18);
+  top: -13px;
+  left: 74px;
+  width: 7px;
+  height: 25px;
+  border-radius: 10px;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  z-index: -10;
+}
+.center-car__salon::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: rgb(51, 23, 18);
+  top: -16px;
+  left: -1px;
+  width: 13px;
+  height: 25px;
+  border-radius: 10px;
+  -webkit-transform: rotate(-35deg);
+          transform: rotate(-35deg);
+  z-index: -10;
+}
+.center-car__decor {
+  width: 15px;
+  height: 5px;
+  background: #000;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  border-radius: 10px;
+}
+.center-car__decor::before {
+  content: "";
+  position: absolute;
+  background: #000;
+  top: -20px;
+  left: -100px;
+  width: 76px;
+  height: 6px;
+  z-index: 2;
+  border-radius: 4px;
+}
+.center-car__decor::after {
+  content: "";
+  position: absolute;
+  background-color: rgb(165, 13, 13);
+  top: -48px;
+  left: 84px;
+  width: 11px;
+  height: 60px;
+  border-radius: 10px;
+  -webkit-transform: rotate(-35deg);
+          transform: rotate(-35deg);
+}
+
+.bonnet-car {
+  width: 99px;
+  height: 80px;
+  background-color: rgb(165, 13, 13);
+  border-radius: 0% 100% 15% 120%/100% 49% 51% 0%;
+  position: relative;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+}
+.bonnet-car::before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  top: 11px;
+  left: 101px;
+  width: 6px;
+  height: 50px;
+  z-index: 2;
+  border-radius: 1px;
+}
+.bonnet-car::after {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  top: 16px;
+  left: 105px;
+  width: 6px;
+  height: 12px;
+  z-index: 2;
+  border-radius: 10px;
+}
+.bonnet-car__circle {
+  background-color: rgba(14, 7, 7, 0.664);
+  width: 80px;
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  left: 7px;
+  border-top-left-radius: 110px;
+  border-top-right-radius: 110px;
+  border: 5px solid #040202;
+  border-bottom: 0;
+}
+.bonnet-car__circle::after {
+  content: "";
+  position: absolute;
+  background: url("../img/tire.png") 0 0 no-repeat;
+  top: 10px;
+  left: 5px;
+  width: 65px;
+  height: 65px;
+  z-index: 2;
+  -webkit-animation: ballon 0.2s linear 0s infinite;
+          animation: ballon 0.2s linear 0s infinite;
+}
+@keyframes ballon {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.bonnet-car__circle::before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  top: 21px;
+  left: 72px;
+  width: 28px;
+  height: 15px;
+  z-index: 2;
+  border-radius: 5px;
+}
